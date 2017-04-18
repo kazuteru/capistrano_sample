@@ -3,8 +3,6 @@ require "capistrano/deploy"
 
 require 'capistrano/rbenv'
 require 'capistrano/rails'
-require 'capistrano/bundler'
-
 require 'capistrano3/unicorn'
 
 set :linked_files, %w{config/secrets.yml}
