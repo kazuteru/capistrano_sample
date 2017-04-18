@@ -9,7 +9,7 @@ timeout 30
 
 stderr_path "#{current_path}/log/unicorn.stderr.log"
 stdout_path "#{current_path}/log/unicorn.stdout.log"
-listen "/tmp/unicorn.staging.sock"
+listen "/home/sockets/unicorn.staging.sock"
 pid "#{shared_path}/tmp/pids/unicorn.pid"
 
 #ダウンタイム無し
