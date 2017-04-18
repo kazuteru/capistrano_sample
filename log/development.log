@@ -1,0 +1,75 @@
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBookmarks (20170418004616)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "address" text, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170418004616"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-18 00:47:30 UTC], ["updated_at", 2017-04-18 00:47:30 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-04-18 09:47:45 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/kazuteru/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kazuteru/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (4.4ms)
+Completed 200 OK in 25ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bookmarks" for ::1 at 2017-04-18 09:48:12 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BookmarksController#index as HTML
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.1ms)[0m  [1m[34mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered bookmarks/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 509ms (Views: 489.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/bookmarks/new" for ::1 at 2017-04-18 09:48:14 +0900
+Processing by BookmarksController#new as HTML
+  Rendering bookmarks/new.html.erb within layouts/application
+  Rendered bookmarks/_form.html.erb (18.5ms)
+  Rendered bookmarks/new.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 55ms (Views: 39.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/bookmarks" for ::1 at 2017-04-18 09:48:27 +0900
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iYa2xLi/IBV++nKmOC4+QPtFddwyk5+hJS6SnBlhfEV0+/RJReae4Q/VD9nB3WCyfz5cV0syI+5CdK9GAGStmg==", "bookmark"=>{"title"=>"title", "address"=>"address", "description"=>"description"}, "commit"=>"Create Bookmark"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "bookmarks" ("title", "address", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title"], ["address", "address"], ["description", "description"], ["created_at", 2017-04-18 00:48:27 UTC], ["updated_at", 2017-04-18 00:48:27 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/bookmarks/1
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/bookmarks/1" for ::1 at 2017-04-18 09:48:27 +0900
+Processing by BookmarksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBookmark Load (0.4ms)[0m  [1m[34mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bookmarks/show.html.erb within layouts/application
+  Rendered bookmarks/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 18.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bookmarks" for ::1 at 2017-04-18 09:48:29 +0900
+Processing by BookmarksController#index as HTML
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.2ms)[0m  [1m[34mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered bookmarks/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 27ms (Views: 24.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/bookmarks" for ::1 at 2017-04-18 12:37:43 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BookmarksController#index as HTML
+  Rendering bookmarks/index.html.erb within layouts/application
+  [1m[36mBookmark Load (0.1ms)[0m  [1m[34mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered bookmarks/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 209ms (Views: 190.0ms | ActiveRecord: 0.5ms)
+
+
