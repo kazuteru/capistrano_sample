@@ -48,6 +48,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  gem 'listen'
+
   gem "capistrano"
   gem 'capistrano-rails'
   gem "capistrano-rbenv"
